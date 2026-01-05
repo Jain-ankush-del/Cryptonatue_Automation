@@ -1,0 +1,1 @@
+return jQuery.active == 0

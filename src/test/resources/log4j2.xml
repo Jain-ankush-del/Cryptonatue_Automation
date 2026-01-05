@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="info">
+    <Appenders>
+        <Console name="Console" target = "SYSTEM_OUT">
+            <PatternLayout
+                    disableAnsi="false"
+                    pattern="%highlight{%d{yyyy-MM-dd HH:mm:ss} [%t] : %m%n}{FATAL=red blink, ERROR=red, WARN=yellow bold, INFO=green, DEBUG=cyan, TRACE=black}"/>
+            <RegexFilter regex=".*(Could not start step|Could not stop step|Could not update step).*" onMatch="DENY" onMismatch="ACCEPT"/>
+        </Console>
+        <File name="Logs"
+              fileName="src/test/resources/logs/logs.log">
+            <PatternLayout>
+                <Pattern>%d{yyyy-MM-dd HH:mm:ss} [%t] : %m%n</Pattern>
+            </PatternLayout>
+            <RegexFilter regex=".*(driver|Could not start step|Could not stop step|Could not update step).*" onMatch="DENY" onMismatch="ACCEPT"/>
+        </File>
+        <File name="BrokenImagesInfo"
+              fileName="src/test/resources/logs/reports/brokenImages.log">
+            <PatternLayout>
+                <Pattern>[%t] : %m%n</Pattern>
+            </PatternLayout>
+            <RegexFilter regex=".*( FORM | FORM:).*" onMatch="ACCEPT" onMismatch="DENY"/>
+        </File>
+        <File name="BrokenImages"
+              fileName="src/test/resources/logs/reports/brokenImages.log">
+            <PatternLayout>
+                <Pattern>[%t] : %m%n</Pattern>
+            </PatternLayout>
+            <RegexFilter regex=".*(Image with url|is not positive).*" onMatch="ACCEPT" onMismatch="DENY"/>
+        </File>
+        <File name="BrokenLinksInfo"
+              fileName="src/test/resources/logs/reports/brokenLinks.log">
+            <PatternLayout>
+                <Pattern>[%t] : %m%n</Pattern>
+            </PatternLayout>
+            <RegexFilter regex=".*( FORM | FORM:).*" onMatch="ACCEPT" onMismatch="DENY"/>
+        </File>
+        <File name="BrokenLinks"
+              fileName="src/test/resources/logs/reports/brokenLinks.log">
+            <PatternLayout>
+                <Pattern>[%t] : %m%n</Pattern>
+            </PatternLayout>
+            <RegexFilter regex=".*(Expected status code).*" onMatch="ACCEPT" onMismatch="DENY"/>
+        </File>
+        <File name="BadImagesPathInfo"
+              fileName="src/test/resources/logs/reports/badImagesPath.log">
+            <PatternLayout>
+                <Pattern>[%t] : %m%n</Pattern>
+            </PatternLayout>
+            <RegexFilter regex=".*( FORM | FORM:).*" onMatch="ACCEPT" onMismatch="DENY"/>
+        </File>
+        <File name="BadImagesPath"
+              fileName="src/test/resources/logs/reports/badImagesPath.log">
+            <PatternLayout>
+                <Pattern>[%t] : %m%n</Pattern>
+            </PatternLayout>
+            <RegexFilter regex=".*domains.*" onMatch="ACCEPT" onMismatch="DENY"/>
+        </File>
+        <File name="BrokenProsConsInfo"
+              fileName="src/test/resources/logs/reports/brokenProsCons.log">
+            <PatternLayout>
+                <Pattern>[%t] : %m%n</Pattern>
+            </PatternLayout>
+            <RegexFilter regex=".*( FORM | FORM:).*" onMatch="ACCEPT" onMismatch="DENY"/>
+        </File>
+        <File name="BrokenProsCons"
+              fileName="src/test/resources/logs/reports/brokenProsCons.log">
+            <PatternLayout>
+                <Pattern>[%t] : %m%n</Pattern>
+            </PatternLayout>
+            <RegexFilter regex=".*'Pros and Cons'.*" onMatch="ACCEPT" onMismatch="DENY"/>
+        </File>
+    </Appenders>
+    <Loggers>
+        <Root level="info">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="Logs"/>
+            <AppenderRef ref="BrokenImagesInfo"/>
+            <AppenderRef ref="BrokenImages"/>
+            <AppenderRef ref="BrokenLinksInfo"/>
+            <AppenderRef ref="BrokenLinks"/>
+            <AppenderRef ref="BadImagesPathInfo"/>
+            <AppenderRef ref="BadImagesPath"/>
+            <AppenderRef ref="BrokenProsConsInfo"/>
+            <AppenderRef ref="BrokenProsCons"/>
+        </Root>
+    </Loggers>
+</Configuration>

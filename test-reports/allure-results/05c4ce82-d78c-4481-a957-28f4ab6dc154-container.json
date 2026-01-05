@@ -1,0 +1,1 @@
+{"uuid":"05c4ce82-d78c-4481-a957-28f4ab6dc154","name":"Cryptonaute","children":["e52795ed-f2b6-43ea-827b-a30b3f666dc7"],"befores":[],"afters":[{"name":"teardownAfterTest","status":"passed","stage":"finished","description":"","steps":[],"attachments":[],"parameters":[],"start":1767073765272,"stop":1767073765490}],"start":1767073757979,"stop":1767073765491}

@@ -1,0 +1,1 @@
+return document.elementFromPoint(arguments[0], arguments[1]);

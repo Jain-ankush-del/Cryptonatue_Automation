@@ -1,0 +1,1 @@
+return document.getElementsByTagName(arguments[0]);

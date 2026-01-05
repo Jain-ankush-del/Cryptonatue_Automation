@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+
+<suite name="Cryptonaute Suite" parallel="classes" thread-count="4">
+
+    <listeners>
+        <listener class-name="io.qameta.allure.testng.AllureTestNg"/>
+    </listeners>
+
+
+    <test name="Regress" verbose="2">
+        <classes>
+            <class name="com.cryptonaute.tests.HomePageTest"/>
+            <class name="com.cryptonaute.tests.HeaderTest"/>
+            <class name="com.cryptonaute.tests.FooterTest"/>
+            <class name="com.cryptonaute.tests.SearchTest"/>
+            <class name="com.cryptonaute.tests.AuthorTest"/>
+            <class name="com.cryptonaute.tests.ContactUSTest"/>
+            <class name="com.cryptonaute.tests.Page404Test"/>
+            <class name="com.cryptonaute.tests.RobotsTest"/>
+            <class name="com.cryptonaute.tests.BMTest"/>
+        </classes>
+    </test>
+
+</suite>

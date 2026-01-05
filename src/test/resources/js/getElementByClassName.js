@@ -1,0 +1,1 @@
+return document.getElementsByClassName(arguments[0]);

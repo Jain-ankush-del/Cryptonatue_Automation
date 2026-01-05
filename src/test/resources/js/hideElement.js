@@ -1,0 +1,1 @@
+arguments[0].setAttribute('style', 'display: none!important;');

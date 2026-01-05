@@ -1,0 +1,11 @@
+{
+  "cookie_compliance": "#hu",
+  "dev_server_banner": "body > p",
+  "custom_plugin_modal": "#popUpModal",
+  "age_verification_modal": "#age_verification",
+  "faded_modal_background": "div.modal-backdrop",
+  "adsense": "ins.adsbygoogle[aria-hidden=false]",
+  "dash_fx": "div.clickout-banner-regular_native_box",
+  "cookie_notice": "#cookie-notice.cookie-notice-visible",
+  "notifications_and_alerts_prompt": "#onesignal-slidedown-container"
+}

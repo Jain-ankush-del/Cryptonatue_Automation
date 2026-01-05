@@ -1,0 +1,1 @@
+return document.querySelector(arguments[0]);

@@ -1,0 +1,105 @@
+<html>
+<head>
+<title>ChromeSettings.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cf8e6d;}
+.s1 { color: #bcbec4;}
+.s2 { color: #bcbec4;}
+.s3 { color: #6aab73;}
+.s4 { color: #7a7e85;}
+.s5 { color: #2aacb8;}
+</style>
+</head>
+<body bgcolor="#1e1f22">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+ChromeSettings.java</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span><span class="s1">framework</span><span class="s2">.</span><span class="s1">driversettings</span><span class="s2">;</span>
+
+<span class="s0">import </span><span class="s1">org</span><span class="s2">.</span><span class="s1">openqa</span><span class="s2">.</span><span class="s1">selenium</span><span class="s2">.</span><span class="s1">chrome</span><span class="s2">.</span><span class="s1">ChromeOptions</span><span class="s2">;</span>
+
+<span class="s0">import </span><span class="s1">java</span><span class="s2">.</span><span class="s1">util</span><span class="s2">.</span><span class="s1">HashMap</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">java</span><span class="s2">.</span><span class="s1">util</span><span class="s2">.</span><span class="s1">Map</span><span class="s2">;</span>
+
+<span class="s0">import static </span><span class="s1">framework</span><span class="s2">.</span><span class="s1">utils</span><span class="s2">.</span><span class="s1">FileUtils</span><span class="s2">.</span><span class="s1">getPathToDownloads</span><span class="s2">;</span>
+
+<span class="s0">public class </span><span class="s1">ChromeSettings </span><span class="s2">{</span>
+
+    <span class="s0">private </span><span class="s1">ChromeSettings</span><span class="s2">() {</span>
+    <span class="s2">}</span>
+
+    <span class="s0">public static </span><span class="s1">ChromeOptions returnChromeOptions</span><span class="s2">() {</span>
+
+        <span class="s1">ChromeOptions optionsChrome </span><span class="s2">= </span><span class="s0">new </span><span class="s1">ChromeOptions</span><span class="s2">();</span>
+        <span class="s1">var browserPrefs </span><span class="s2">= </span><span class="s0">new </span><span class="s1">HashMap</span><span class="s2">&lt;</span><span class="s1">String</span><span class="s2">, </span><span class="s1">Object</span><span class="s2">&gt;();</span>
+
+        <span class="s0">final </span><span class="s1">String</span><span class="s2">[] </span><span class="s1">arguments </span><span class="s2">= {</span>
+                <span class="s3">&quot;--window-size=1920,1080&quot;</span><span class="s2">,</span>
+                <span class="s3">&quot;--disable-extensions&quot;</span><span class="s2">,</span>
+                <span class="s3">&quot;--proxy-server='direct://'&quot;</span><span class="s2">,</span>
+                <span class="s3">&quot;--proxy-bypass-list=*&quot;</span><span class="s2">,</span>
+                <span class="s3">&quot;--headless&quot;</span><span class="s2">,</span>
+                <span class="s3">&quot;--disable-gpu&quot;</span><span class="s2">,</span>
+                <span class="s3">&quot;--incognito&quot;</span><span class="s2">,</span>
+                <span class="s3">&quot;--disable-dev-shm-usage&quot;</span><span class="s2">,</span>
+                <span class="s3">&quot;--no-sandbox&quot;</span><span class="s2">,</span>
+                <span class="s3">&quot;--disable-browser-side-navigation&quot;</span><span class="s2">,</span>
+                <span class="s3">&quot;--ignore-certificate-errors&quot;</span><span class="s2">,</span>
+                <span class="s3">&quot;--disable-popup-blocking&quot;</span><span class="s2">,</span>
+                <span class="s3">&quot;--disable-blink-features&quot;</span><span class="s2">,</span>
+                <span class="s3">&quot;--remote-allow-origins=*&quot;</span><span class="s2">,</span>
+                <span class="s3">&quot;--disable-blink-features=AutomationControlled&quot;</span><span class="s2">,</span>
+
+        <span class="s2">};</span>
+
+       <span class="s1">optionsChrome</span><span class="s2">.</span><span class="s1">addArguments</span><span class="s2">(</span><span class="s1">arguments</span><span class="s2">);</span>
+<span class="s4">//        browserPrefs.put(&quot;download.default_directory&quot;, getPathToDownloads());</span>
+        <span class="s1">browserPrefs</span><span class="s2">.</span><span class="s1">put</span><span class="s2">(</span><span class="s3">&quot;safebrowsing.enabled&quot;</span><span class="s2">, </span><span class="s3">&quot;false&quot;</span><span class="s2">);</span>
+        <span class="s1">browserPrefs</span><span class="s2">.</span><span class="s1">put</span><span class="s2">(</span><span class="s3">&quot;disk-cache-size&quot;</span><span class="s2">, </span><span class="s5">0</span><span class="s2">);</span>
+        <span class="s1">optionsChrome</span><span class="s2">.</span><span class="s1">setExperimentalOption</span><span class="s2">(</span><span class="s3">&quot;prefs&quot;</span><span class="s2">, </span><span class="s1">browserPrefs</span><span class="s2">);</span>
+        <span class="s1">optionsChrome</span><span class="s2">.</span><span class="s1">setExperimentalOption</span><span class="s2">(</span><span class="s3">&quot;excludeSwitches&quot;</span><span class="s2">, </span><span class="s0">new </span><span class="s1">String</span><span class="s2">[]{</span><span class="s3">&quot;enable-automation&quot;</span><span class="s2">});</span>
+        <span class="s0">return </span><span class="s1">optionsChrome</span><span class="s2">;</span>
+    <span class="s2">}</span>
+<span class="s2">}</span>
+
+       <span class="s4">/*ChromeOptions optionsChrome = new ChromeOptions(); 
+        Map&lt;String, Object&gt; browserPrefs = new HashMap&lt;&gt;(); 
+ 
+        final String[] arguments = { 
+                &quot;--disable-extensions&quot;, 
+                &quot;--proxy-server='direct://'&quot;, 
+                &quot;--proxy-bypass-list=*&quot;, 
+                // &quot;--headless&quot;,  // ❌ REMOVE THIS 
+                &quot;--disable-gpu&quot;, 
+                &quot;--incognito&quot;, 
+                &quot;--disable-dev-shm-usage&quot;, 
+                &quot;--no-sandbox&quot;, 
+                &quot;--ignore-certificate-errors&quot;, 
+                &quot;--disable-popup-blocking&quot;, 
+                &quot;--disable-blink-features=AutomationControlled&quot;, 
+                &quot;--remote-allow-origins=*&quot;, 
+                &quot;--start-maximized&quot; 
+        }; 
+ 
+        optionsChrome.addArguments(arguments); 
+ 
+// downloads (optional) 
+        browserPrefs.put(&quot;download.default_directory&quot;, getPathToDownloads()); 
+        browserPrefs.put(&quot;safebrowsing.enabled&quot;, true); 
+        browserPrefs.put(&quot;profile.default_content_settings.popups&quot;, 0); 
+ 
+        optionsChrome.setExperimentalOption(&quot;prefs&quot;, browserPrefs); 
+        optionsChrome.setExperimentalOption( 
+                &quot;excludeSwitches&quot;, 
+                new String[]{&quot;enable-automation&quot;} 
+        ); 
+ 
+        return optionsChrome; 
+*/</span>
+
+</pre>
+</body>
+</html>
