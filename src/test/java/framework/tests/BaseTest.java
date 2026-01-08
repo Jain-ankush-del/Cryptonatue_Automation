@@ -53,11 +53,11 @@ public class BaseTest {
         browser = Browser.getInstance();
         browser.getDriver().manage().window().maximize();
         // Timeouts
-        browser.getDriver().manage().timeouts().pageLoadTimeout(Duration.ofSeconds(60));
-        browser.getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+        browser.getDriver().manage().timeouts().pageLoadTimeout(Duration.ofSeconds(120));
+        browser.getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
         // Explicit wait
-        WebDriverWait wait = new WebDriverWait(browser.getDriver(), Duration.ofSeconds(20));
+        WebDriverWait wait = new WebDriverWait(browser.getDriver(), Duration.ofSeconds(60));
         String url = getConfigProperty(env + ".URL");
         switch (env) {
             case "dev":
@@ -130,5 +130,5 @@ public class BaseTest {
     public static String getDataProperty(String key) {
         return dataProperty.getProperty(key);
     }
-    
+
 }

@@ -1,6 +1,7 @@
 package com.cryptonaute.templates;
 
 import com.cryptonaute.pages.StandardPage;
+import framework.browser.Browser;
 import framework.elements.Button;
 import framework.elements.Image;
 import framework.elements.Label;
@@ -15,22 +16,33 @@ import static org.testng.Assert.assertTrue;
 
 public class AuthorPage extends StandardPage {
 
-    private static String AUTHOR_PAGE_LINK ="/auteurs/romaric/";
+    private static String AUTHOR_PAGE_LINK = "/auteurs/romaric/";
 
-    private static final Label PAGE_AUTHOR_TITLE = new Label(By.cssSelector("div.m-author-about h4"),"Author Header");
+    private static Label PAGE_AUTHOR_TITLE = new Label(By.cssSelector("div.m-author-about h4"), "Author Header");
+    private static  Label PAGE_AUTHOR_TITLE_MOBILE = new Label(By.cssSelector("h4.m-author-about__title"),"Author Header");
     private static final Image AUTHOR_IMAGE = new Image(By.xpath("//img[contains(@class,'avatar-120')]"), "Author image");
-    private static final Button AUTHOR_TWITTER = new Button(By.xpath("//div[@class='m-author-socials'][1]/a[1]"),"Author Twitter Button");
+    private static final Button AUTHOR_TWITTER = new Button(By.xpath("//div[@class='m-author-socials'][1]/a[1]"), "Author Twitter Button");
     private static final Button AUTHOR_LINKEDIN = new Button(By.xpath("//div[@class='m-author-socials'][1]/a[2]"), "Author Linkedin button ");
-    private static final Label AUTHOR_NAME = new Label(By.cssSelector("div.m-author-about h4"),"Author Name");
-    private static final Label AUTHOR_DESCRIPTION =  new Label(By.xpath("//div[@class='m-author-about__description']"), "Author Description");
+    private static  Label AUTHOR_NAME_MOBILE = new Label(By.cssSelector("h4.m-author-about__title"),"Author Name");
+    private static  Label AUTHOR_NAME = new Label(By.cssSelector("div.m-author-about h4"), "Author Name");
+    private static final Label AUTHOR_DESCRIPTION = new Label(By.xpath("//div[@class='m-author-about__description']"), "Author Description");
     private static final Button AUTHOR_SHOW_MORE = new Button(By.xpath("//button[@class='show-more-author-button m-button m-button--sec']"), "Author Show More");
-    private static final Label  AUTHOR_ROLE = new Label(By.xpath("//p[contains(@class,'m-show--sm')]"),"Author Role");
-    private static final Label AUTHOR_ARTICLE_COUNT = new Label(By.xpath("//span[@class='m-author-count m-show--sm']"), "Author article count");
+    private static final Label AUTHOR_ROLE = new Label(By.xpath("//p[contains(@class,'m-show--sm')]"), "Author Role");
+    private static  Label  AUTHOR_ROLE_MOBILE = new Label(By.xpath("//p[normalize-space(text())='Journaliste']"),"Author Role");
+    private static  Label AUTHOR_ARTICLE_COUNT = new Label(By.xpath("//span[@class='m-author-count m-show--sm']"), "Author article count");
 
- public AuthorPage(){super();}
+    public AuthorPage() {
+        super();
+    }
+
+
 
     @Step("Open Author page")
-    public static String getAuthorPageLink() {return AUTHOR_PAGE_LINK;}
+    public static String getAuthorPageLink() {
+        return AUTHOR_PAGE_LINK;
+    }
+
+
 
     @Step("Verifying Author Blocks")
     public static void verifyAuthorBlockIsDisplayed() throws UnsupportedEncodingException {
@@ -43,13 +55,20 @@ public class AuthorPage extends StandardPage {
         assertTrue(AUTHOR_DESCRIPTION.isPresent(), "Description is present");
         assertTrue(AUTHOR_SHOW_MORE.isPresent(), "Show more button is present");
         System.out.println("Author role = " + AUTHOR_ROLE.getText());
-        assertTrue(AUTHOR_ROLE.isPresent(),"Author role is present");
+        assertTrue(AUTHOR_ROLE.isPresent(), "Author role is present");
 
 
     }
+
+
+
     @Step("Verifying Authors block data")
     public static void verifyAuthorBlockData(String name) {
-
+        /*if ()
+            PAGE_AUTHOR_TITLE = "";
+        else
+            PAGE_AUTHOR_TITLE = "";
+*/
         String titleText = PAGE_AUTHOR_TITLE.getText();
         String authorNameText = AUTHOR_NAME.getText();
 
@@ -86,28 +105,33 @@ public class AuthorPage extends StandardPage {
                 "Author name contains expected name. Actual name: " + actualName);
 */
     }
+
     @Step("Verifying X button")
     public static void verifyXButtonPresentOnAuthorPage() {
-     System.out.println(AUTHOR_TWITTER.getText());
-    assertTrue(AUTHOR_TWITTER.isPresent(),"Twitter is present");
- }
+        System.out.println(AUTHOR_TWITTER.getText());
+        assertTrue(AUTHOR_TWITTER.isPresent(), "Twitter is present");
+    }
 
     @Step("Verifying LinkedIn button")
     public static void verifylinkedInButtonPresentOnAuthorPage() {
         System.out.println(AUTHOR_LINKEDIN.getText());
-        assertTrue(AUTHOR_LINKEDIN.isPresent(),"Linkedin is present");
+        assertTrue(AUTHOR_LINKEDIN.isPresent(), "Linkedin is present");
     }
 
     @Step("Verifying Show more button")
     public static void verifyShowMoreButtonPresentOnAuthorPage() {
-        assertTrue(AUTHOR_SHOW_MORE.isPresent(),"Show More is present");
+        assertTrue(AUTHOR_SHOW_MORE.isPresent(), "Show More is present");
     }
 
     @Step("Get author article count")
     public static int getAuthorArticleCount() {
         String text = AUTHOR_ARTICLE_COUNT.getText(); // "1931 Articles"
         System.out.println(text);
-        return Integer.parseInt(text.replaceAll("[^0-9]", ""));
+        String cleaned = text.replaceAll("[^0-9]", "").trim();
+        if(cleaned.isEmpty()) {
+            throw new RuntimeException("No number found in article count text:" +text);
+        }
+        return Integer.parseInt(cleaned);
     }
 
     @Step("Verify author article count is greater than zero")

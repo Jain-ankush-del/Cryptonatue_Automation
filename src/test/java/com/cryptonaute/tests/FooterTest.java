@@ -15,13 +15,13 @@ public class FooterTest extends BaseTest {
     public FooterTest() throws IOException {
     }
 
-  /* @Test
+  @Test
     void verifyScrollToTopButtonScrollsPageToTop() {
         Footer footer = new Footer();
         footer.clickScrollToTopButton();
         waitForScrollToComplete("top");
         Assert.assertTrue(isPageAtTop(), "Page wasn't scrolled to the top");
-    }*/
+    }
 
   @Test()
     void verifyAllFooterHasMandatoryElements() {

@@ -68,11 +68,10 @@ public class Footer {
     @Step("Scrolling to top via 'Scroll to Top' button...")
     public void clickScrollToTopButton() {
         logger.info("Scrolling to top via 'Scroll to Top' button...");
-
         scrollToBottom();
-       // CloseTheCross.click();
-       // btnScolltotop.setElementAttribute("style", "opacity: 1;");
-        btnScolltotop.click();
+       CloseTheCross.click();
+       btnScolltotop.setElementAttribute("style", "opacity: 1;");
+       btnScolltotop.click();
 
         /*
         Forced Thread.sleep().

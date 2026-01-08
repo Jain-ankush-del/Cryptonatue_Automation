@@ -1,6 +1,7 @@
 package com.cryptonaute.tests;
 
 import com.cryptonaute.templates.BMPage;
+import com.cryptonaute.templates.HomePage;
 import com.cryptonaute.templates.Page404Template;
 import framework.browser.Browser;
 import framework.tests.BaseTest;
@@ -20,13 +21,17 @@ import static com.cryptonaute.templates.BMPage.verifyBMBlockIsDisplayed;
 public class BMTest extends BaseTest {
     public BMTest() throws IOException {}
 
-    @Test
-    public void verifyThatBMPageIsOpenAsExpected() throws UnsupportedEncodingException {
+    @Test(priority = 0)
+    void verifyThatBMPageIsOpenAsExpected() throws UnsupportedEncodingException {
         BMPage bmPage = new BMPage();
         browser.navigate(Browser.getCurrentUrl() +getBmPageLink(), true);
-        bmPage.PopupClosed();
+        //bmPage.PopupClosed();
         bmPage.ShowMoreBuuton();
         bmPage.verifyBMBlockIsDisplayed();
 
+
+
     }
+
+
 }

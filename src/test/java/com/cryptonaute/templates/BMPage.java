@@ -4,6 +4,7 @@ import com.cryptonaute.pages.StandardPage;
 import framework.elements.Button;
 import framework.elements.Image;
 import framework.elements.Label;
+import framework.elements.Link;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -26,7 +27,7 @@ public class BMPage extends StandardPage {
     private static final Image BM_STAR_RATING_IMAGE = new Image(By.xpath("//div[@class='toplist-cryptonaute__offer-rating']//div/img"),"Star rating image");
     private final Button CloseTheCross = new Button(By.xpath("//button[normalize-space()='Refuser']"),"Refuse the pop up");
     private final Button SHOW_MORE_button = new Button(By.xpath("//div[@class='toplist-cryptonaute__show-more-btn']"), "Click on show more button");
-
+    private static final Link BM_Logo = new Link(By.xpath("//div[@class='toplist-cryptonaute__offers']//div//div//a"),"BM cards Displayed or not");
     @Step("Open BM Page")
     public static String getBmPageLink() {return BM_PAGE_LINK;}
 
@@ -58,6 +59,9 @@ public class BMPage extends StandardPage {
         assertTrue(BM_CARDS.isImageLoaded(), "Image is Loaded");
         assertTrue(BM_OFFER_TITLE.isPresent(), "BM offer title is present");
         assertTrue(BM_STAR_RATING_IMAGE.isPresent(), "Star rating is present");
+        BM_CARDS.verifyImagesAreLoaded();
+        BM_Logo.verifyLinksAreValid();
+
 
     }
 
