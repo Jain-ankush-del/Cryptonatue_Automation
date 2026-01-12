@@ -43,7 +43,7 @@ public abstract class AppiumDeviceFactory {
         //capabilities.get().setCapability("avd", deviceName);
 
         capabilities.get().setCapability("avd", WordUtils.capitalize(deviceName).replace(" ", "_"));
-        capabilities.get().setCapability("isHeadless", true);
+        //capabilities.get().setCapability("isHeadless", true);
         capabilities.get().setCapability(MobileCapabilityType.AUTOMATION_NAME, AutomationName.ANDROID_UIAUTOMATOR2);
         capabilities.get().setCapability(MobileCapabilityType.PLATFORM_VERSION, platformVersion);
         capabilities.get().setCapability(MobileCapabilityType.DEVICE_NAME, deviceName);
@@ -58,7 +58,7 @@ public abstract class AppiumDeviceFactory {
         caps.setCapability("avd", deviceName);
         caps.setCapability("browserName", "Chrome");
 */
-        capabilities.get().setCapability("newCommandTimeout", 3000);
+        capabilities.get().setCapability("newCommandTimeout", 8000);
 
     }
 
@@ -66,7 +66,7 @@ public abstract class AppiumDeviceFactory {
         capabilities.get().setCapability(MobileCapabilityType.AUTOMATION_NAME, "XCUITest");
         capabilities.get().setCapability(MobileCapabilityType.BROWSER_NAME, "Safari");
         capabilities.get().setCapability(MobileCapabilityType.PLATFORM_NAME, "iOS");
-        capabilities.get().setCapability("isHeadless", true);
+        //capabilities.get().setCapability("isHeadless", true);
         capabilities.get().setCapability(MobileCapabilityType.PLATFORM_VERSION, platformVersion);
         capabilities.get().setCapability(MobileCapabilityType.DEVICE_NAME, WordUtils.capitalize(deviceName).replaceAll("(?i)iphone", "iPhone"));
     }

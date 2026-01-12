@@ -278,6 +278,9 @@ public final class Browser {
         return configProperty.getProperty(key);
     }
 
+        // Fallback to config.properties
+
+
     public void waitForPageToLoad() {
         WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofMillis(getTimeoutForPageLoad()));
         try {
@@ -496,9 +499,36 @@ public final class Browser {
     }
 
     public static void scrollToBottom() {
-        ((JavascriptExecutor) getDriver()).executeScript(JavaScript.SCROLL_TO_BOTTOM.getScript());
-        waitForScrollToComplete(SCROLL_BOTTOM);
+       /* ((JavascriptExecutor) getDriver()).executeScript(JavaScript.SCROLL_TO_BOTTOM.getScript());
+
+        waitForScrollToComplete(SCROLL_BOTTOM);*/
+        JavascriptExecutor js = (JavascriptExecutor) getDriver();
+        WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(30));
+
+        long lastHeight = (Long) js.executeScript("return document.body.scrollHeight");
+
+        while (true) {
+            js.executeScript("window.scrollTo(0, document.body.scrollHeight);");
+
+            try {
+                // Wait up to 5 seconds for height to change
+                long finalLastHeight = lastHeight;
+                wait.until(driver -> {
+                    long currentHeight = (Long) js.executeScript("return document.body.scrollHeight");
+                    return currentHeight > finalLastHeight;
+                });
+            } catch (TimeoutException e) {
+                // No change in height → we're done
+                break;
+            }
+
+            lastHeight = (Long) js.executeScript("return document.body.scrollHeight");
+        }
+
+        // Final scroll to bottom
+        js.executeScript("window.scrollTo(0, document.body.scrollHeight);");
     }
+
 
     public static void scrollToCallLazyLoad() {
         Actions action = new Actions(getDriver());

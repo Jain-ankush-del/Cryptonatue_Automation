@@ -521,5 +521,31 @@ public abstract class BaseElement {
             setElementAttribute(hrefAttribute, browser.getUrlWithNoCacheParam(href));
         }
     }
+    public void waitForTextToBePresent() {
+        new WebDriverWait(getDriver(), Duration.ofSeconds(40)).until(driver -> {
+            try {
+                WebElement el = getElement();
+                String txt = el.getText();
+                return txt != null && !txt.trim().isEmpty();
+            } catch (Exception e) {
+                return false;
+            }
+        });
+    }
+    public static void waitForCryptonauteHeader() {
+        WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(60));
+
+        wait.until(driver -> {
+            try {
+                Object exists = ((JavascriptExecutor) driver)
+                        .executeScript("return document.querySelector('#header-search') !== null;");
+                return Boolean.TRUE.equals(exists);
+            } catch (Exception e) {
+                return false;
+            }
+        });
+
+    }
+
 }
 

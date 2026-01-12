@@ -10,9 +10,9 @@
 
     <test name="Regress" verbose="2">
         <classes>
-            <class name="com.cryptonaute.tests.HomePageTest"/>
             <class name="com.cryptonaute.tests.HeaderTest"/>
             <class name="com.cryptonaute.tests.FooterTest"/>
+            <class name="com.cryptonaute.tests.HomePageTest"/>
             <class name="com.cryptonaute.tests.SearchTest"/>
             <class name="com.cryptonaute.tests.AuthorTest"/>
             <class name="com.cryptonaute.tests.ContactUSTest"/>

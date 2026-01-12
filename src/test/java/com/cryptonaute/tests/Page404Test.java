@@ -13,7 +13,7 @@ public class Page404Test extends BaseTest {
     }
 
     @Test()
-    void verifyThatRobotsPageIIsOpenedAndLooksAsExpected() throws IOException {
+    void verifyThat404PageIIsOpenedAndLooksAsExpected() throws IOException {
         ;
         Page404Template page404Template = new Page404Template();
         browser.navigate(Browser.getCurrentUrl() + page404Template.get404Link());

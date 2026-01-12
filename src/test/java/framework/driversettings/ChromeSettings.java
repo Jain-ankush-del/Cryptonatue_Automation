@@ -1,5 +1,6 @@
 package framework.driversettings;
 
+import framework.browser.Browser;
 import org.openqa.selenium.PageLoadStrategy;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -26,8 +27,9 @@ public class ChromeSettings {
                 "--disable-extensions",
                 "--proxy-server='direct://'",
                 "--proxy-bypass-list=*",
-                //"--headless= new",
+                "--headless=new",
                 "--window-size=1920,1080",
+                "--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36",
                 "--start-maximized",
                 "--disable-gpu",
                 "--incognito",
@@ -58,6 +60,10 @@ public class ChromeSettings {
         //optionsChrome.setPageLoadStrategy(PageLoadStrategy.EAGER);
 
         return optionsChrome;
+
+    }
     }
 
-}
+
+
+

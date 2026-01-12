@@ -3,13 +3,13 @@ package com.cryptonaute.tests;
 import com.cryptonaute.pageobject.footer.Footer;
 import framework.forms.BasePage;
 import framework.tests.BaseTest;
+import org.openqa.selenium.JavascriptExecutor;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import java.io.IOException;
 
-import static framework.browser.Browser.isPageAtTop;
-import static framework.browser.Browser.waitForScrollToComplete;
+import static framework.browser.Browser.*;
 
 public class FooterTest extends BaseTest {
     public FooterTest() throws IOException {
@@ -19,6 +19,8 @@ public class FooterTest extends BaseTest {
     void verifyScrollToTopButtonScrollsPageToTop() {
         Footer footer = new Footer();
         footer.clickScrollToTopButton();
+      /*JavascriptExecutor js = (JavascriptExecutor) driver;
+      js.executeScript("window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });");*/
         waitForScrollToComplete("top");
         Assert.assertTrue(isPageAtTop(), "Page wasn't scrolled to the top");
     }

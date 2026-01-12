@@ -21,7 +21,8 @@ public class Search {
     }
 
     //private static final Button SEARCH_DROPDOWN_BUTTON = new Button(new By.ByXPath("//img[@alt='Icône de recherche']"), "Search button");
-    private static final Button SEARCH_DROPDOWN_BUTTON = new Button(new By.ByXPath("//button[@id='header-search']"), "Search button");
+    private static final Button SEARCH_DROPDOWN_BUTTON = new Button(new By.ByXPath("//button[contains(@class,'header-search-button')]"), "Search button");
+   // private static final Button SEARCH_DROPDOWN_BUTTON = new Button(new By.ByXPath("//img[@alt='Icône de recherche']"), "Search button");
     private static final TextBox SEARCH_FIELD = new TextBox(new By.ByXPath("//input[@id='keyword']"), "Search Field");
     private static final Button SEARCH_BUTTON = new Button(new By.ByXPath("//button[contains(normalize-space(), 'Search')]"), "Search button");
 

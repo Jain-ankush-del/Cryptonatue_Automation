@@ -36,7 +36,7 @@ public class Footer {
    private final Label SocailMediaItems = new Label(By.xpath("//div[@class='footer-socials']//div"), "Social Media icon");
    private final Label FooterDescription = new Label(By.xpath("//p[contains(text(),'Le trading est risqué et vous pouvez perdre tout o')]"),"Footer Description");
    //private final Label CopyRightLabel = new Label(By.xpath("//p[contains(text(),'Tous droits réservés – 2017 – 2025 © dev.cryptonau')]"), "Copyright text");
-   private final Button btnScolltotop = new Button(By.xpath("//div[@id='to_top_scrollup']//*[local-name()='svg']"),"Scroll to top");
+   private final Button btnScolltotop = new Button(By.xpath("//div[@id='to_top_scrollup']"),"Scroll to top");
    private final Button CloseTheCross = new Button(By.xpath("//button[normalize-space()='Refuser']"),"Refuse the pop up");
    private final Link  FooterLinks = new Link(By.xpath("//footer[contains(@class, 'footer-info')]//*[@href][not(contains(@class, 'footer-email-link'))]"), "Footer Links");
 
@@ -68,8 +68,9 @@ public class Footer {
     @Step("Scrolling to top via 'Scroll to Top' button...")
     public void clickScrollToTopButton() {
         logger.info("Scrolling to top via 'Scroll to Top' button...");
+
         scrollToBottom();
-       CloseTheCross.click();
+       //CloseTheCross.click();
        btnScolltotop.setElementAttribute("style", "opacity: 1;");
        btnScolltotop.click();
 
@@ -78,7 +79,7 @@ public class Footer {
         Depending on browser version, there may be delays in the operation of the 'Scroll to Top' button
          */
        try {
-            Thread.sleep(4000);
+            Thread.sleep(10000);
         } catch (InterruptedException exc) {
 //            logger.info("Thread " + Thread.currentThread().getName() + " is interrupted", exc.getMessage());
             Thread.currentThread().interrupt();

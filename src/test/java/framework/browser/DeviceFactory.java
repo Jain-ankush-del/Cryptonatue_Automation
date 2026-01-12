@@ -47,7 +47,7 @@ public class DeviceFactory {
                 optionsChrome.setExperimentalOption("mobileEmulation", browserPrefs);
                 optionsChrome.addArguments("--user-agent=".concat(getConfigProperty(USER_AGENT)));
                 driver = new ChromeDriver(optionsChrome);
-                driver.manage().window().maximize();
+                //driver.manage().window().maximize();
                 break;
             }
             case "firefox": {

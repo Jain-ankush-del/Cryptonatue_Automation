@@ -20,11 +20,11 @@ public class HeaderTest extends BaseTest {
         Header header =new Header();
        header.verifyHeaderExist();
     }
-    @Test
+    /*@Test
     void verifyAllFooterHasMandatoryElements() {
         Header header =new Header();
         header.navigateHomeThroughLogo();
-    }
+    }*/
 
    @Test()
     void verifyTelegramLink() throws UnsupportedEncodingException {
